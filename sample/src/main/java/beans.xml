@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="addr1" class="sample.demo.Address">
+		<property name="city" value="Pune"></property>
+		<property name="pincode" value="3200000"></property>
+	</bean>
+
+	<bean id="addr2" class="sample.demo.Address">
+		<property name="city" value="Mumbai"></property>
+		<property name="pincode" value="110234"></property>
+	</bean>
+
+
+	<bean id="p1" class="sample.demo.Person">
+		<property name="name" value="Pratik"></property>
+		<property name="contactNo" value="7676789090"></property>
+		<property name="address" ref="addr1"></property>
+	</bean>
+
+	<!-- <bean id="p2" class="sample.demo.Person" scope="prototype"> -->
+	<bean id="p2" class="sample.demo.Person" scope="singleton">
+		<property name="name" value="Pratiksha" />
+		<property name="address" ref="addr1"></property>
+		<property name="contactNo">
+			<list>
+				<value>7890000000</value>
+				<value>9880708790</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="p3" class="sample.demo.Person" scope="singleton">
+		<constructor-arg name="name" value="Amol">
+		</constructor-arg>
+		<constructor-arg name="contactNo" value="8987887766">
+		</constructor-arg>
+		<constructor-arg name="address" ref="addr2"></constructor-arg>
+
+	</bean>
+
+	<bean id="dept1" class="sample.demo.Department">
+		<property name="deptNo" value="10"></property>
+		<property name="deptName" value="IT"></property>
+	</bean>
+
+	<bean id="dept" class="sample.demo.Department">
+		<property name="deptNo" value="20"></property>
+		<property name="deptName" value="HR"></property>
+	</bean>
+	<bean id="e1" class="sample.demo.Employee" autowire="byName">
+		<property name="empId" value="101"></property>
+		<property name="empName" value="Manoj"></property>
+		<property name="salary" value="67000"></property>
+	</bean>
+
+</beans>
